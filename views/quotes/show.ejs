@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotate</title>
-</head>
-<body>
-    <h1>New Quote</h1>
-    <table>
-        <div><%= quote.content %> </div>
-        <div><%= quote.source %> </div>
-    </table>
-    <button><a href="/quotes/"></a>Edit</button>
+<%- include('../partials/header') %>
+
+    <h1>Quote</h1>
+    <div> 
+        <blockquote><%= quote.content %> </blockquote>
+        -
+        <cite> <%= quote.source.title %> </cite>
+        ...
+        <cite> <%= quote.source.author %> </cite>
+    </div>
+    <section>
+        <form action="/quotes/<%=quote.id%>?_method=DELETE" method="POST">
+          <button type="submit">Delete Quote</button>
+        </form>
+      </section>
 </body>
 </html>

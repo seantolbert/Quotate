@@ -5,13 +5,10 @@ const sourceSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
-      unique: true,
     },
     author: {
       type: String,
-      required: true,
-      unique: true,
+      default: null,
     },
   },
   {

@@ -1,78 +1,115 @@
-const Quote = require('../models/quote')
+const Quote = require("../models/quote");
+const Source = require("../models/source");
 
 module.exports = {
-    index,
-    new: newQuote,
-    edit,
-    show,
-    update,
-    create,
-    delete: deleteQuote,
-}
+  index,
+  new: newQuote,
+  edit,
+  show,
+  update,
+  create,
+  delete: deleteQuote,
+};
 
 async function index(req, res) {
-    try {
-        const quotes = await Quote.find({});
-        console.log(quotes)
-        res.render('quotes/index', {
-            quotes
-        })
-    } catch (err) {
-        res.send(err);
-    }
+  try {
+    const quotes = await Quote.find({});
+    const sources = await Source.find({});
+    console.log(quotes);
+    res.render("quotes/index", {
+      quotes,
+      sources,
+    });
+  } catch (err) {
+    res.send(err);
+  }
 }
 
-function newQuote(req, res) {
-    res.render('quotes/new');
+async function newQuote(req, res) {
+  try {
+    const sources = await Source.find({});
+    res.render("quotes/new", {
+      sources,
+    });
+  } catch (err) {
+    res.send(err);
+  }
 }
 
 async function edit(req, res) {
-	try {
-		const editQuote = await Quote.findById(req.params.id);
-		res.render('edit.ejs', {
-			quote: editQuote,
-		});
-	} catch (err) {
-		res.send(err);
-	}
+  try {
+    const quoteToEdit = await Quote.findById(req.params.id);
+    res.render("edit.ejs", {
+      quoteToEdit,
+    });
+  } catch (err) {
+    res.send(err);
+  }
 }
 
+// function show(req, res) {
+// 	// Movie.findById(req.params.id, function (err, movie) {
+// 	// 	res.render('movies/show', { title: 'Movie Detail', movie });
+// 	// });
+
+// 	Quote.findById(req.params.id)
+// 		.populate('source')
+// 		.exec(function (err, quote) {
+// 			// Performer.find({}).where('_id').nin(movie.cast)
+// 			Source.find(
+// 				{ _id: { $nin: quote.source } },
+// 				function (err, sources) {
+// 					res.render('quotes/show', {
+// 						title: 'Quote Detail',
+// 						quote,
+// 						sources,
+// 					});
+// 				}
+// 			);
+// 		});
+// }
+
 async function show(req, res) {
-    try {
-        const quote = await Quote.findById(req.params.id);
-        res.render('quotes/show.ejs', {
-            quote,
-        })
-    } catch (err) {
-        res.send(err);
-    }
+  try {
+    const quote = await Quote.findById(req.params.id)
+    .populate("source");
+      res.render('quotes/show', {
+        quote,
+      })
+  } catch (err) {
+    res.send(err);
+  }
 }
 
 async function update(req, res) {
-    try {
-        const updateQuote = Quote.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-        })
-        res.redirect('/quotes')
-    } catch (err) {
-        res.send(err);
-    }
+  try {
+    const updateQuote = Quote.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.redirect("/quotes");
+  } catch (err) {
+    res.send(err);
+  }
 }
 
 async function create(req, res) {
-    try {
-        const freshQuote = await Quote.create(req.body);
-        res.redirect(`/quotes/${freshQuote._id}`)
-    } catch (err) {
-        res.send(err);
-    }
+  try {
+    // if th there is a source in the request body
+    // if not, source = anonymous
+    // query the source collection for the default
+    console.log(req.body);
+    const freshQuote = await Quote.create(req.body);
+    res.redirect(`/quotes/${freshQuote._id}`);
+  } catch (err) {
+    res.send(err);
+  }
 }
 
 async function deleteQuote(req, res) {
-    try {
-        await Quote.findByIdAndRemove(req.params.id);
-        res.redirect('/quotes')
-    } catch (err) {
-        res.send(err);
-    }
+  try {
+    await Quote.findByIdAndRemove(req.params.id);
+    res.redirect("quotes/index");
+  } catch (err) {
+    res.send(err);
+  }
 }

@@ -9,8 +9,7 @@ const quoteSchema = new Schema(
     },
     source: {
       type: Schema.Types.ObjectId,
-      ref: "source",
-      default: 'anonymous'
+      ref: "Source",
     },
   },
   {

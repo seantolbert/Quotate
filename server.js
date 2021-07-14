@@ -9,7 +9,7 @@ require('./config/database');
 
 var indexRouter = require('./routes/index');
 var quotesRouter = require('./routes/quotes');
-// const sourcesRouter = require('./routes/sources');
+const sourcesRouter = require('./routes/sources');
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/quotes', quotesRouter);
-// app.use('/', sourcesRouter);
+app.use('/', sourcesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

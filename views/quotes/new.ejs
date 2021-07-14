@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<%- include('../partials/header') %>
+
     <form action="/quotes" method="POST">
+        <label>Quote:</label>
         <input type="text" name="content">
-        <input type="text" name="source">
-        <input type="submit" value="add Quote">
+        <select name="source">
+            <%- sources.map(s => `
+            <option value="${s._id}">${s.title} ${s.author}</option>
+            `).join('...') %>
+        </select>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>

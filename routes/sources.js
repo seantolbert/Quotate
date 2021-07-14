@@ -5,3 +5,5 @@ const sourcesCtrl = require('../controllers/sources')
 router.get('/sources/new', sourcesCtrl.new);
 router.post('/sources', sourcesCtrl.create);
 router.post('/quotes/:id/sources', sourcesCtrl.addToQuote);
+
+module.exports = router;
