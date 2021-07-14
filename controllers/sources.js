@@ -5,7 +5,6 @@ module.exports = {
   new: newSource,
   create,
   addToQuote,
-  // delete: deleteSource,
 };
 
 function addToQuote(req, res) {
@@ -17,10 +16,6 @@ function addToQuote(req, res) {
   });
 }
 
-// function newSource(req, res) {
-//     res.render('sources/new')
-// }
-
 function newSource(req, res) {
   Source.find({}, function (err, sources) {
     res.render("sources/new", {
@@ -29,15 +24,6 @@ function newSource(req, res) {
     });
   });
 }
-
-// async function create(req, res) {
-//     try {
-//         const newSource = await Source.create(req.body);
-//         res.redirect(`/sources/${newSource._id}`);
-//     } catch (err) {
-//         res.send(err);
-//     }
-// }
 
 function create(req, res) {
   Source.create(req.body, function (err, source) {
