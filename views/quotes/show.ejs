@@ -9,6 +9,9 @@
         <cite> <%= quote.source.author %> </cite>
     </div>
     <section>
+      <button><a href="/quotes/<%=quote.id%>/edit">Edit</a></button>
+    </section>
+    <section>
         <form action="/quotes/<%=quote.id%>?_method=DELETE" method="POST">
           <button type="submit">Delete Quote</button>
         </form>

@@ -39,35 +39,13 @@ async function newQuote(req, res) {
 async function edit(req, res) {
   try {
     const quoteToEdit = await Quote.findById(req.params.id);
-    res.render("edit.ejs", {
+    res.render("quotes/edit", {
       quoteToEdit,
     });
   } catch (err) {
     res.send(err);
   }
 }
-
-// function show(req, res) {
-// 	// Movie.findById(req.params.id, function (err, movie) {
-// 	// 	res.render('movies/show', { title: 'Movie Detail', movie });
-// 	// });
-
-// 	Quote.findById(req.params.id)
-// 		.populate('source')
-// 		.exec(function (err, quote) {
-// 			// Performer.find({}).where('_id').nin(movie.cast)
-// 			Source.find(
-// 				{ _id: { $nin: quote.source } },
-// 				function (err, sources) {
-// 					res.render('quotes/show', {
-// 						title: 'Quote Detail',
-// 						quote,
-// 						sources,
-// 					});
-// 				}
-// 			);
-// 		});
-// }
 
 async function show(req, res) {
   try {
@@ -83,7 +61,7 @@ async function show(req, res) {
 
 async function update(req, res) {
   try {
-    const updateQuote = Quote.findByIdAndUpdate(req.params.id, req.body, {
+    await Quote.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
     res.redirect("/quotes");
@@ -108,7 +86,7 @@ async function create(req, res) {
 async function deleteQuote(req, res) {
   try {
     await Quote.findByIdAndRemove(req.params.id);
-    res.redirect("quotes/index");
+    res.redirect("/quotes");
   } catch (err) {
     res.send(err);
   }
