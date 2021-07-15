@@ -15,7 +15,6 @@ async function index(req, res) {
   try {
     const quotes = await Quote.find({});
     const sources = await Source.find({});
-    console.log(quotes);
     res.render("quotes/index", {
       quotes,
       sources,
@@ -71,7 +70,6 @@ async function update(req, res) {
 
 async function create(req, res) {
   try {
-    console.log(req.body);
     const freshQuote = await Quote.create(req.body);
     res.redirect(`/quotes/${freshQuote._id}`);
   } catch (err) {
