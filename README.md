@@ -8,12 +8,12 @@ This App is the ultimate catolog of your favorite inspirational quotes and every
 technologies used: 
   Text editor - Visual Studio Code
   Languages used - JS, CSS, EJS
+  Style - Bulma
   Heroku Deployment
   
-  getting started: 
+  getting started: *deploys locally*
   
   Next Steps:
-    1. An index page for sources
-    2. A delete button for sources
-    3. improved UI
+    1. Full CRUD deployment for Sources
+    2. API to iMdb for movie title, director, and author info with autopopulate feature
     
