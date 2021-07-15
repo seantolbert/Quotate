@@ -8,6 +8,8 @@ This App is the ultimate catolog of your favorite inspirational quotes and every
   technologies used:<br>
   -Text editor - Visual Studio Code<br>
   -Languages used - JS, CSS, EJS<br>
+  -Node.js<br>
+  -Express frameworks<br>
   -Style - Bulma<br>
   -Heroku Deployment
   
