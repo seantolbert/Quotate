@@ -1,22 +1,28 @@
 <%- include('../partials/header') %>
 
 <p>
-	Please make sure your title and/or author is not already added
+	<h3 class="title is-5">Please make sure your title and/or author is not already added</h3>
+	<div class="select is-multiple is-rounded is-primary is-large">
 	<select>
 		<% sources.forEach(function(s) { %>
             <option><%= s.title %></option>
             <% }); %>
 	</select>
+</div>
+	<div class="select is-multiple is-rounded is-primary is-large">
 	<select>
 		<% sources.forEach(function(s) { %>
             <option><%= s.author %></option>
             <% }); %>
 	</select>
+</div>
 </p>
 <form action="/sources" method="POST">
 	<label>Title:</label>
-	<input type="text" name="title" />
+	<input type="text" name="title" class="input is-primary is-medium is-rounded" />
 	<label>Author:</label>
-	<input type="text" name="author" />
-	<input type="submit" value="Add Source" />
+	<input type="text" name="author" class="input is-info is-medium is-rounded" />
+</br>
+</br>
+	<button type="submit" class="button is-large is-rounded is-success">Add Source</button>
 </form>

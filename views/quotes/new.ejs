@@ -1,14 +1,16 @@
 <%- include('../partials/header') %>
 
     <form action="/quotes" method="POST">
-        <label>Quote:</label>
-        <input type="text" name="content">
-        <select name="source">
+        <textarea type="text" name="content" class="textarea is-primary is-large is-rounded" placeholder="Enter Quote Here"></textarea>
+    </br>
+        <div class="select is-multiple is-rounded is-primary is-large">
+            <select name="source" class="select" class="quote-input">
             <%- sources.map(s => `
-            <option value="${s._id}">${s.title} ${s.author}</option>
+            <option value="${s._id}">${s.title} ... ${s.author}</option>
             `).join('...') %>
-        </select>
-        <button type="submit">Submit</button>
+            </select>
+        </div>
+        </br>
+    </br>
+        <button type="submit" class="button is-primary is-large">Submit</button>
     </form>
-</body>
-</html>

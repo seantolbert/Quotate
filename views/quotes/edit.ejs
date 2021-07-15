@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
 
 <main>
-    <h2>Edit Quote</h2>
+    <h2 class="title is-3">Edit Quote</h2>
     <form action="/quotes/<%=quoteToEdit.id%>?_method=PUT" method="POST">
-      <input type="text" name="content" value="<%=quoteToEdit.content%>"><br>
-      <button type="submit">Update Quote</button>
+      <input type="text" name="content" value="<%=quoteToEdit.content%>" class="input is-primary is-large is-rounded"><br>
+      <button type="submit" class="button is-large is-rounded is-success">Update Quote</button>
     </form>
   </main>
 </body>

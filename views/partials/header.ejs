@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/bulma.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Quotate</title>
-</head>
-<body>
-<nav>
-    <button><a href="/quotes/new">Add Quote</a></button>
-    <button><a href="/sources/new">Add Source</a></button>
-    <button><a href="/quotes">All Quotes</a></button>
-</nav>    
+  </head>
+  <body>
+    <h1 class="title is-1 is-spaced">Quotate</h1>
+    <nav class="breadcrumb is-left" aria-label="breadcrumbs">
+      <li>
+        <a href="/quotes" class="navbar-item" class="navbar-item">All Quotes</a>
+      </li>
+      <li><a href="/quotes/new" class="navbar-item">Add Quotes</a></li>
+      <li><a href="/sources/new" class="navbar-item">Add Source</a></li>
+      <div class="navbar-end"></div>
+    </nav>
+  </body>
+</html>

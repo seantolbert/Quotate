@@ -1,14 +1,14 @@
 <%- include('../partials/header') %>
 
-    <h1>All Quotes</h1>
-    <div id="list">
-      <blockquote>
+    <h1 class="title is-3">All Quotes</h1>
+    <div class="content is-medium" id="list">
+      <blockquote >
         <% quotes.forEach(function(q) { %>
           <% sources.forEach(function(s) { %> 
           <p><%= q.content %></p>
           -
           <cite><%= `${s.title}... ${s.author}` %></cite>
-          <button><a href="/quotes/<%= q._id %>"><small>Preferences</small></a></button>
+          <button class="button is-small is-rounded is-warning"><a href="/quotes/<%= q._id %>"><small>+</small></a></button>
           <% }); %>
           <% }); %>
       </blockquote>

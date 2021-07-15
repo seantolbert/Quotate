@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
-    <h1>Quote</h1>
-    <div> 
+    <title>All Quotes</title>
+    <div class="content is-large"> 
         <blockquote><%= quote.content %> </blockquote>
         -
         <cite> <%= quote.source.title %> </cite>
@@ -9,11 +9,11 @@
         <cite> <%= quote.source.author %> </cite>
     </div>
     <section>
-      <button><a href="/quotes/<%=quote.id%>/edit">Edit</a></button>
+      <button class="button is-medium is-rounded is-warning"><a href="/quotes/<%=quote.id%>/edit">Edit</a></button>
     </section>
     <section>
         <form action="/quotes/<%=quote.id%>?_method=DELETE" method="POST">
-          <button type="submit">Delete Quote</button>
+          <button type="submit" class="button is-medium is-rounded is-danger">Delete Quote</button>
         </form>
       </section>
 </body>

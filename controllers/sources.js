@@ -27,6 +27,6 @@ function newSource(req, res) {
 
 function create(req, res) {
   Source.create(req.body, function (err, source) {
-		res.redirect('/quotes');
-	});
+    res.redirect("/quotes");
+  });
 }

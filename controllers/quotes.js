@@ -49,11 +49,10 @@ async function edit(req, res) {
 
 async function show(req, res) {
   try {
-    const quote = await Quote.findById(req.params.id)
-    .populate("source");
-      res.render('quotes/show', {
-        quote,
-      })
+    const quote = await Quote.findById(req.params.id).populate("source");
+    res.render("quotes/show", {
+      quote,
+    });
   } catch (err) {
     res.send(err);
   }
@@ -72,9 +71,6 @@ async function update(req, res) {
 
 async function create(req, res) {
   try {
-    // if th there is a source in the request body
-    // if not, source = anonymous
-    // query the source collection for the default
     console.log(req.body);
     const freshQuote = await Quote.create(req.body);
     res.redirect(`/quotes/${freshQuote._id}`);
